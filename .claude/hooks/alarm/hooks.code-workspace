@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../.vscode-toast"
+		},
+		{
+			"path": "../../../data/shrimp_data"
+		},
+		{
+			"path": "../../../docs"
+		}
+	],
+	"settings": {}
+}

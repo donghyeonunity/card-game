@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": ["Bash","WebFetch"],
+    "deny": [],
+    "defaultMode":"plan",
+    "additionalDirectories": []
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "pwsh -NoProfile -File .claude/statusline-command.ps1"
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -File .claude/hooks/alarm/on-end-work.ps1"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -File .claude/hooks/alarm/on-request-permission.ps1"
+          }
+        ]
+      }
+    ]
+  },
+  "outputStyle": "Explanatory"
+}
