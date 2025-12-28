@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* 게임용 커스텀 테마 변수 */
+@theme {
+  --color-game-bg: #1a1a2e;
+  --color-game-card: #16213e;
+  --color-game-accent: #e94560;
+  --color-game-gold: #f4d03f;
+  --color-game-health: #27ae60;
+  --color-game-mana: #3498db;
+}
+
+/* 게임 기본 스타일 */
+:root {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.9);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+/* 전투 배경 스타일 (픽셀 아트) */
+.battle-background {
+  background-image: url('./assets/backgrounds/battle_bg_prototype_v1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* 픽셀 아트 선명하게 유지 */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  /* 이미지 로드 실패 시 fallback */
+  background-color: #1A0F1F;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+}
+
+/* 카드 게임 유틸리티 클래스 */
+@layer components {
+  .card-base {
+    @apply rounded-lg shadow-lg transition-all duration-200 cursor-pointer;
+    @apply bg-game-card border-2 border-gray-600;
+  }
+
+  .card-base:hover {
+    @apply -translate-y-2 shadow-xl border-game-accent;
+  }
+
+  .btn-game {
+    @apply px-4 py-2 rounded-lg font-semibold transition-all duration-200;
+    @apply bg-game-accent text-white hover:opacity-80;
+  }
+
+  .health-bar {
+    @apply h-2 rounded-full bg-game-health;
+  }
+
+  .mana-bar {
+    @apply h-2 rounded-full bg-game-mana;
+  }
+}
