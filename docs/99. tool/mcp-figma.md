@@ -1,0 +1,1 @@
+https://developers.figma.com/docs/figma-mcp-server/tools-and-prompts/
