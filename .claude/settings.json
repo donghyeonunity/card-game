@@ -1,6 +1,9 @@
 {
   "permissions": {
-    "allow": ["Bash","WebFetch"],
+    "allow": [
+      "Bash",
+      "WebFetch",
+      "mcp__ClaudeTalkToFigma"],
     "deny": [],
     "defaultMode":"plan",
     "additionalDirectories": []

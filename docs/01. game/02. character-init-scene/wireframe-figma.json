@@ -1,0 +1,1151 @@
+{
+  "meta": {
+    "name": "CharacterSelection_Wireframe",
+    "description": "캐릭터 선택 씬 - 고서 스타일 와이어프레임",
+    "version": "3.0.0",
+    "resolution": { "width": 1920, "height": 1080 },
+    "designSystem": {
+      "grid": {
+        "columns": 12,
+        "columnWidth": 128,
+        "gutter": 24,
+        "margin": 60,
+        "totalWidth": 1920
+      },
+      "spacing": {
+        "base": 8,
+        "scale": [8, 16, 24, 32, 48, 64, 96]
+      },
+      "colors": {
+        "background": "#1A1A2E",
+        "bookBackground": "#2E2620",
+        "surfaceDark": "#2A2A40",
+        "surfaceLight": "#3A3A50",
+        "stroke": "#4A4A60",
+        "strokeBook": "#4A3C28",
+        "strokeSelected": "#C89B3C",
+        "textPrimary": "#E0D5C7",
+        "textSecondary": "#A8A196",
+        "fillSelected": "#4A4A60",
+        "accent": "#C89B3C"
+      },
+      "strokeWidth": {
+        "primary": 2,
+        "secondary": 1,
+        "selected": 3
+      },
+      "cornerRadius": {
+        "default": 12,
+        "button": 12,
+        "card": 12
+      }
+    }
+  },
+  "frame": {
+    "name": "CharacterSelectionScene",
+    "width": 1920,
+    "height": 1080,
+    "fill": "#1A1A2E"
+  },
+  "components": [
+    {
+      "name": "scene_bg",
+      "type": "rectangle",
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "fill": "#1A1A2E",
+      "annotation": "전체 화면 다크 톤 배경 - 던전 분위기 (Z0)"
+    },
+    {
+      "name": "book_frame_group",
+      "type": "group",
+      "x": 80,
+      "y": 60,
+      "width": 1760,
+      "height": 880,
+      "annotation": "고서 프레임 - 펼쳐진 책 형태",
+      "children": [
+        {
+          "name": "book_bg",
+          "type": "rectangle",
+          "x": 0,
+          "y": 0,
+          "width": 1760,
+          "height": 880,
+          "fill": "#2E2620",
+          "stroke": "#4A3C28",
+          "strokeWidth": 4,
+          "cornerRadius": 8,
+          "annotation": "책 배경 - 세피아 톤"
+        },
+        {
+          "name": "center_spine",
+          "type": "rectangle",
+          "x": 870,
+          "y": 20,
+          "width": 20,
+          "height": 840,
+          "fill": "#3A2E20",
+          "annotation": "책 중앙 경계선"
+        }
+      ]
+    },
+    {
+      "name": "main_content_group",
+      "type": "group",
+      "x": 60,
+      "y": 96,
+      "width": 1800,
+      "height": 768,
+      "annotation": "메인 컨텐츠 영역 - 좌측 초상화 + 우측 정보 패널",
+      "children": [
+        {
+          "name": "left_panel_group",
+          "type": "group",
+          "x": 0,
+          "y": 0,
+          "width": 876,
+          "height": 768,
+          "annotation": "좌측 패널 - 캐릭터 초상화와 스토리 (6컬럼)",
+          "children": [
+            {
+              "name": "character_sprite_group",
+              "type": "group",
+              "x": 100,
+              "y": 0,
+              "width": 600,
+              "height": 620,
+              "annotation": "캐릭터 스프라이트 - 배경 위에 직접 오버레이 (Z1)",
+              "children": [
+                {
+                  "name": "character_shadow",
+                  "type": "ellipse",
+                  "x": 50,
+                  "y": 560,
+                  "width": 500,
+                  "height": 60,
+                  "fill": "#000000",
+                  "opacity": 0.3,
+                  "annotation": "캐릭터 그림자 효과"
+                },
+                {
+                  "name": "character_sprite_placeholder",
+                  "type": "rectangle",
+                  "x": 50,
+                  "y": 20,
+                  "width": 500,
+                  "height": 550,
+                  "fill": "transparent",
+                  "stroke": "#FFFFFF",
+                  "strokeWidth": 2,
+                  "strokeDasharray": "12,6",
+                  "cornerRadius": 8,
+                  "annotation": "캐릭터 스프라이트 플레이스홀더 (점선 테두리)"
+                },
+                {
+                  "name": "character_sprite_label",
+                  "type": "text",
+                  "x": 50,
+                  "y": 280,
+                  "width": 500,
+                  "height": 30,
+                  "content": "캐릭터 스프라이트",
+                  "fontSize": 18,
+                  "textAlign": "center",
+                  "fill": "#FFFFFF",
+                  "opacity": 0.7,
+                  "annotation": "플레이스홀더 라벨"
+                }
+              ]
+            },
+            {
+              "name": "story_box",
+              "type": "group",
+              "x": 100,
+              "y": 632,
+              "width": 600,
+              "height": 120,
+              "annotation": "캐릭터 스토리 텍스트 박스 - 캐릭터 하단 (Z3)",
+              "children": [
+                {
+                  "name": "story_bg",
+                  "type": "rectangle",
+                  "x": 0,
+                  "y": 0,
+                  "width": 600,
+                  "height": 120,
+                  "fill": "#2A2A40",
+                  "opacity": 0.85,
+                  "stroke": "#4A4A60",
+                  "strokeWidth": 1,
+                  "cornerRadius": 12,
+                  "annotation": "스토리 배경 - 반투명 다크 톤"
+                },
+                {
+                  "name": "story_text",
+                  "type": "text",
+                  "x": 24,
+                  "y": 24,
+                  "width": 552,
+                  "height": 72,
+                  "content": "\"어머니의 병을 고치기 위해 던전에 들어온 전직 전사\"\n캐릭터 배경 스토리가 여기 표시됩니다.",
+                  "fontSize": 14,
+                  "lineHeight": 1.6,
+                  "fill": "#FFFFFF",
+                  "annotation": "스토리 텍스트 - 캐릭터 선택 시 동적 변경 (흰색)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "right_panel_group",
+          "type": "group",
+          "x": 924,
+          "y": 0,
+          "width": 876,
+          "height": 768,
+          "annotation": "우측 패널 - 캐릭터 정보, 특성, 카드 (6컬럼)",
+          "children": [
+            {
+              "name": "character_info_group",
+              "type": "group",
+              "x": 0,
+              "y": 0,
+              "width": 876,
+              "height": 120,
+              "annotation": "캐릭터 기본 정보 - 이름과 스탯",
+              "children": [
+                {
+                  "name": "character_name",
+                  "type": "text",
+                  "x": 0,
+                  "y": 0,
+                  "width": 876,
+                  "height": 40,
+                  "content": "전사",
+                  "fontSize": 28,
+                  "fontWeight": "bold",
+                  "fill": "#FFFFFF",
+                  "annotation": "캐릭터 이름 - 동적 로드"
+                },
+                {
+                  "name": "stats_container",
+                  "type": "group",
+                  "x": 0,
+                  "y": 48,
+                  "width": 876,
+                  "height": 72,
+                  "annotation": "스탯 표시 영역",
+                  "children": [
+                    {
+                      "name": "stat_hp",
+                      "type": "text",
+                      "x": 0,
+                      "y": 0,
+                      "width": 200,
+                      "height": 32,
+                      "content": "체력: 60",
+                      "fontSize": 16,
+                      "fill": "#FFFFFF",
+                      "annotation": "HP 스탯"
+                    },
+                    {
+                      "name": "stat_energy",
+                      "type": "text",
+                      "x": 200,
+                      "y": 0,
+                      "width": 200,
+                      "height": 32,
+                      "content": "에너지: 3",
+                      "fontSize": 16,
+                      "fill": "#FFFFFF",
+                      "annotation": "에너지 스탯"
+                    },
+                    {
+                      "name": "stat_specialty",
+                      "type": "text",
+                      "x": 0,
+                      "y": 40,
+                      "width": 400,
+                      "height": 32,
+                      "content": "특화: 공격/방어",
+                      "fontSize": 16,
+                      "fill": "#FFFFFF",
+                      "annotation": "카드 특화 분야"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "divider_1",
+              "type": "line",
+              "x1": 0,
+              "y1": 144,
+              "x2": 876,
+              "y2": 144,
+              "stroke": "#4A4A60",
+              "strokeWidth": 1,
+              "annotation": "구분선 1"
+            },
+            {
+              "name": "traits_section_group",
+              "type": "group",
+              "x": 0,
+              "y": 168,
+              "width": 876,
+              "height": 240,
+              "annotation": "특성 선택 섹션",
+              "children": [
+                {
+                  "name": "traits_label",
+                  "type": "text",
+                  "x": 0,
+                  "y": 0,
+                  "width": 200,
+                  "height": 24,
+                  "content": "특성 선택",
+                  "fontSize": 18,
+                  "fontWeight": "bold",
+                  "fill": "#FFFFFF",
+                  "annotation": "특성 섹션 제목"
+                },
+                {
+                  "name": "traits_buttons_row1",
+                  "type": "group",
+                  "x": 0,
+                  "y": 40,
+                  "width": 500,
+                  "height": 56,
+                  "annotation": "특성 버튼 첫 번째 줄 (3개)",
+                  "children": [
+                    {
+                      "name": "trait_careful",
+                      "type": "group",
+                      "x": 0,
+                      "y": 0,
+                      "width": 140,
+                      "height": 56,
+                      "annotation": "신중함 버튼 - 방어 계열, Default 상태",
+                      "children": [
+                        {
+                          "name": "trait_careful_bg",
+                          "type": "rectangle",
+                          "x": 0,
+                          "y": 0,
+                          "width": 140,
+                          "height": 56,
+                          "fill": "#2A2A40",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 2,
+                          "cornerRadius": 12,
+                          "annotation": "버튼 배경"
+                        },
+                        {
+                          "name": "trait_careful_text",
+                          "type": "text",
+                          "x": 0,
+                          "y": 16,
+                          "width": 140,
+                          "height": 24,
+                          "content": "신중함",
+                          "fontSize": 14,
+                          "textAlign": "center",
+                          "fill": "#FFFFFF",
+                          "annotation": "특성 이름"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "trait_reckless",
+                      "type": "group",
+                      "x": 164,
+                      "y": 0,
+                      "width": 140,
+                      "height": 56,
+                      "annotation": "무모함 버튼 - 공격 계열, Selected 상태",
+                      "children": [
+                        {
+                          "name": "trait_reckless_bg",
+                          "type": "rectangle",
+                          "x": 0,
+                          "y": 0,
+                          "width": 140,
+                          "height": 56,
+                          "fill": "#4A4A60",
+                          "stroke": "#6A6A80",
+                          "strokeWidth": 3,
+                          "cornerRadius": 12,
+                          "annotation": "버튼 배경 - 선택됨"
+                        },
+                        {
+                          "name": "trait_reckless_text",
+                          "type": "text",
+                          "x": 0,
+                          "y": 16,
+                          "width": 140,
+                          "height": 24,
+                          "content": "무모함",
+                          "fontSize": 14,
+                          "textAlign": "center",
+                          "fill": "#FFFFFF",
+                          "annotation": "특성 이름"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "trait_analytical",
+                      "type": "group",
+                      "x": 328,
+                      "y": 0,
+                      "width": 140,
+                      "height": 56,
+                      "annotation": "분석적 버튼 - 드로우 계열, Default 상태",
+                      "children": [
+                        {
+                          "name": "trait_analytical_bg",
+                          "type": "rectangle",
+                          "x": 0,
+                          "y": 0,
+                          "width": 140,
+                          "height": 56,
+                          "fill": "#2A2A40",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 2,
+                          "cornerRadius": 12,
+                          "annotation": "버튼 배경"
+                        },
+                        {
+                          "name": "trait_analytical_text",
+                          "type": "text",
+                          "x": 0,
+                          "y": 16,
+                          "width": 140,
+                          "height": 24,
+                          "content": "분석적",
+                          "fontSize": 14,
+                          "textAlign": "center",
+                          "fill": "#FFFFFF",
+                          "annotation": "특성 이름"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "traits_buttons_row2",
+                  "type": "group",
+                  "x": 0,
+                  "y": 112,
+                  "width": 340,
+                  "height": 56,
+                  "annotation": "특성 버튼 두 번째 줄 (2개)",
+                  "children": [
+                    {
+                      "name": "trait_intuitive",
+                      "type": "group",
+                      "x": 0,
+                      "y": 0,
+                      "width": 140,
+                      "height": 56,
+                      "annotation": "직감적 버튼 - 서치 계열, Default 상태",
+                      "children": [
+                        {
+                          "name": "trait_intuitive_bg",
+                          "type": "rectangle",
+                          "x": 0,
+                          "y": 0,
+                          "width": 140,
+                          "height": 56,
+                          "fill": "#2A2A40",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 2,
+                          "cornerRadius": 12,
+                          "annotation": "버튼 배경"
+                        },
+                        {
+                          "name": "trait_intuitive_text",
+                          "type": "text",
+                          "x": 0,
+                          "y": 16,
+                          "width": 140,
+                          "height": 24,
+                          "content": "직감적",
+                          "fontSize": 14,
+                          "textAlign": "center",
+                          "fill": "#FFFFFF",
+                          "annotation": "특성 이름"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "trait_negotiator",
+                      "type": "group",
+                      "x": 164,
+                      "y": 0,
+                      "width": 140,
+                      "height": 56,
+                      "annotation": "협상가 버튼 - 골드 계열, Default 상태",
+                      "children": [
+                        {
+                          "name": "trait_negotiator_bg",
+                          "type": "rectangle",
+                          "x": 0,
+                          "y": 0,
+                          "width": 140,
+                          "height": 56,
+                          "fill": "#2A2A40",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 2,
+                          "cornerRadius": 12,
+                          "annotation": "버튼 배경"
+                        },
+                        {
+                          "name": "trait_negotiator_text",
+                          "type": "text",
+                          "x": 0,
+                          "y": 16,
+                          "width": 140,
+                          "height": 24,
+                          "content": "협상가",
+                          "fontSize": 14,
+                          "textAlign": "center",
+                          "fill": "#FFFFFF",
+                          "annotation": "특성 이름"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "trait_description_box",
+                  "type": "group",
+                  "x": 492,
+                  "y": 40,
+                  "width": 384,
+                  "height": 168,
+                  "annotation": "선택된 특성 상세 설명 박스",
+                  "children": [
+                    {
+                      "name": "trait_desc_bg",
+                      "type": "rectangle",
+                      "x": 0,
+                      "y": 0,
+                      "width": 384,
+                      "height": 168,
+                      "fill": "#2A2A40",
+                      "stroke": "#4A4A60",
+                      "strokeWidth": 2,
+                      "cornerRadius": 12,
+                      "annotation": "설명 박스 배경"
+                    },
+                    {
+                      "name": "trait_desc_title",
+                      "type": "text",
+                      "x": 16,
+                      "y": 16,
+                      "width": 352,
+                      "height": 24,
+                      "content": "무모함",
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "fill": "#FFFFFF",
+                      "annotation": "선택된 특성 이름"
+                    },
+                    {
+                      "name": "trait_desc_text",
+                      "type": "text",
+                      "x": 16,
+                      "y": 48,
+                      "width": 352,
+                      "height": 104,
+                      "content": "공격력 +15%\n받는 피해 +10%\n\n획득 카드: 돌진",
+                      "fontSize": 14,
+                      "lineHeight": 1.5,
+                      "fill": "#B0B0C0",
+                      "annotation": "특성 상세 설명 - 동적 로드"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "divider_2",
+              "type": "line",
+              "x1": 0,
+              "y1": 432,
+              "x2": 876,
+              "y2": 432,
+              "stroke": "#4A4A60",
+              "strokeWidth": 1,
+              "annotation": "구분선 2"
+            },
+            {
+              "name": "cards_section_group",
+              "type": "group",
+              "x": 0,
+              "y": 456,
+              "width": 876,
+              "height": 312,
+              "annotation": "획득 카드 미리보기 섹션",
+              "children": [
+                {
+                  "name": "cards_label",
+                  "type": "text",
+                  "x": 0,
+                  "y": 0,
+                  "width": 300,
+                  "height": 24,
+                  "content": "획득 카드 미리보기",
+                  "fontSize": 18,
+                  "fontWeight": "bold",
+                  "fill": "#FFFFFF",
+                  "annotation": "카드 섹션 제목"
+                },
+                {
+                  "name": "cards_container",
+                  "type": "group",
+                  "x": 0,
+                  "y": 40,
+                  "width": 700,
+                  "height": 196,
+                  "annotation": "카드 4장 가로 나열 (140x196 중형)",
+                  "children": [
+                    {
+                      "name": "card_1",
+                      "type": "group",
+                      "x": 0,
+                      "y": 0,
+                      "width": 140,
+                      "height": 196,
+                      "annotation": "카드 1 - 호버 시 상세 모달",
+                      "children": [
+                        {
+                          "name": "card_1_bg",
+                          "type": "rectangle",
+                          "x": 0,
+                          "y": 0,
+                          "width": 140,
+                          "height": 196,
+                          "fill": "#2A2A40",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 2,
+                          "cornerRadius": 12,
+                          "annotation": "카드 배경"
+                        },
+                        {
+                          "name": "card_1_title",
+                          "type": "text",
+                          "x": 0,
+                          "y": 12,
+                          "width": 140,
+                          "height": 20,
+                          "content": "돌진",
+                          "fontSize": 12,
+                          "fontWeight": "bold",
+                          "textAlign": "center",
+                          "fill": "#FFFFFF",
+                          "annotation": "카드 이름"
+                        },
+                        {
+                          "name": "card_1_image",
+                          "type": "rectangle",
+                          "x": 20,
+                          "y": 40,
+                          "width": 100,
+                          "height": 80,
+                          "fill": "#3A3A50",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 1,
+                          "cornerRadius": 8,
+                          "annotation": "카드 이미지 플레이스홀더"
+                        },
+                        {
+                          "name": "card_1_cost",
+                          "type": "ellipse",
+                          "x": 10,
+                          "y": 156,
+                          "width": 32,
+                          "height": 32,
+                          "fill": "#2A2A40",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 2,
+                          "annotation": "에너지 코스트"
+                        },
+                        {
+                          "name": "card_1_cost_text",
+                          "type": "text",
+                          "x": 10,
+                          "y": 164,
+                          "width": 32,
+                          "height": 16,
+                          "content": "2",
+                          "fontSize": 12,
+                          "textAlign": "center",
+                          "fill": "#FFFFFF",
+                          "annotation": "코스트 수치"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "card_2",
+                      "type": "group",
+                      "x": 164,
+                      "y": 0,
+                      "width": 140,
+                      "height": 196,
+                      "annotation": "카드 2",
+                      "children": [
+                        {
+                          "name": "card_2_bg",
+                          "type": "rectangle",
+                          "x": 0,
+                          "y": 0,
+                          "width": 140,
+                          "height": 196,
+                          "fill": "#2A2A40",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 2,
+                          "cornerRadius": 12,
+                          "annotation": "카드 배경"
+                        },
+                        {
+                          "name": "card_2_title",
+                          "type": "text",
+                          "x": 0,
+                          "y": 12,
+                          "width": 140,
+                          "height": 20,
+                          "content": "방어 태세",
+                          "fontSize": 12,
+                          "fontWeight": "bold",
+                          "textAlign": "center",
+                          "fill": "#FFFFFF",
+                          "annotation": "카드 이름"
+                        },
+                        {
+                          "name": "card_2_image",
+                          "type": "rectangle",
+                          "x": 20,
+                          "y": 40,
+                          "width": 100,
+                          "height": 80,
+                          "fill": "#3A3A50",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 1,
+                          "cornerRadius": 8,
+                          "annotation": "카드 이미지 플레이스홀더"
+                        },
+                        {
+                          "name": "card_2_cost",
+                          "type": "ellipse",
+                          "x": 10,
+                          "y": 156,
+                          "width": 32,
+                          "height": 32,
+                          "fill": "#2A2A40",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 2,
+                          "annotation": "에너지 코스트"
+                        },
+                        {
+                          "name": "card_2_cost_text",
+                          "type": "text",
+                          "x": 10,
+                          "y": 164,
+                          "width": 32,
+                          "height": 16,
+                          "content": "1",
+                          "fontSize": 12,
+                          "textAlign": "center",
+                          "fill": "#FFFFFF",
+                          "annotation": "코스트 수치"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "card_3",
+                      "type": "group",
+                      "x": 328,
+                      "y": 0,
+                      "width": 140,
+                      "height": 196,
+                      "annotation": "카드 3",
+                      "children": [
+                        {
+                          "name": "card_3_bg",
+                          "type": "rectangle",
+                          "x": 0,
+                          "y": 0,
+                          "width": 140,
+                          "height": 196,
+                          "fill": "#2A2A40",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 2,
+                          "cornerRadius": 12,
+                          "annotation": "카드 배경"
+                        },
+                        {
+                          "name": "card_3_title",
+                          "type": "text",
+                          "x": 0,
+                          "y": 12,
+                          "width": 140,
+                          "height": 20,
+                          "content": "강타",
+                          "fontSize": 12,
+                          "fontWeight": "bold",
+                          "textAlign": "center",
+                          "fill": "#FFFFFF",
+                          "annotation": "카드 이름"
+                        },
+                        {
+                          "name": "card_3_image",
+                          "type": "rectangle",
+                          "x": 20,
+                          "y": 40,
+                          "width": 100,
+                          "height": 80,
+                          "fill": "#3A3A50",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 1,
+                          "cornerRadius": 8,
+                          "annotation": "카드 이미지 플레이스홀더"
+                        },
+                        {
+                          "name": "card_3_cost",
+                          "type": "ellipse",
+                          "x": 10,
+                          "y": 156,
+                          "width": 32,
+                          "height": 32,
+                          "fill": "#2A2A40",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 2,
+                          "annotation": "에너지 코스트"
+                        },
+                        {
+                          "name": "card_3_cost_text",
+                          "type": "text",
+                          "x": 10,
+                          "y": 164,
+                          "width": 32,
+                          "height": 16,
+                          "content": "2",
+                          "fontSize": 12,
+                          "textAlign": "center",
+                          "fill": "#FFFFFF",
+                          "annotation": "코스트 수치"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "card_4",
+                      "type": "group",
+                      "x": 492,
+                      "y": 0,
+                      "width": 140,
+                      "height": 196,
+                      "annotation": "카드 4",
+                      "children": [
+                        {
+                          "name": "card_4_bg",
+                          "type": "rectangle",
+                          "x": 0,
+                          "y": 0,
+                          "width": 140,
+                          "height": 196,
+                          "fill": "#2A2A40",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 2,
+                          "cornerRadius": 12,
+                          "annotation": "카드 배경"
+                        },
+                        {
+                          "name": "card_4_title",
+                          "type": "text",
+                          "x": 0,
+                          "y": 12,
+                          "width": 140,
+                          "height": 20,
+                          "content": "회복",
+                          "fontSize": 12,
+                          "fontWeight": "bold",
+                          "textAlign": "center",
+                          "fill": "#FFFFFF",
+                          "annotation": "카드 이름"
+                        },
+                        {
+                          "name": "card_4_image",
+                          "type": "rectangle",
+                          "x": 20,
+                          "y": 40,
+                          "width": 100,
+                          "height": 80,
+                          "fill": "#3A3A50",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 1,
+                          "cornerRadius": 8,
+                          "annotation": "카드 이미지 플레이스홀더"
+                        },
+                        {
+                          "name": "card_4_cost",
+                          "type": "ellipse",
+                          "x": 10,
+                          "y": 156,
+                          "width": 32,
+                          "height": 32,
+                          "fill": "#2A2A40",
+                          "stroke": "#4A4A60",
+                          "strokeWidth": 2,
+                          "annotation": "에너지 코스트"
+                        },
+                        {
+                          "name": "card_4_cost_text",
+                          "type": "text",
+                          "x": 10,
+                          "y": 164,
+                          "width": 32,
+                          "height": 16,
+                          "content": "1",
+                          "fontSize": 12,
+                          "textAlign": "center",
+                          "fill": "#FFFFFF",
+                          "annotation": "코스트 수치"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "cards_hint",
+                  "type": "text",
+                  "x": 0,
+                  "y": 256,
+                  "width": 700,
+                  "height": 20,
+                  "content": "이 캐릭터를 선택하면 위 카드들이 덱에 추가됩니다",
+                  "fontSize": 12,
+                  "textAlign": "center",
+                  "fill": "#B0B0C0",
+                  "annotation": "안내 텍스트"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "footer_group",
+      "type": "group",
+      "x": 80,
+      "y": 960,
+      "width": 1760,
+      "height": 80,
+      "annotation": "하단 네비게이션 - 뒤로/캐릭터탭/시작",
+      "children": [
+        {
+          "name": "back_button",
+          "type": "group",
+          "x": 0,
+          "y": 8,
+          "width": 140,
+          "height": 48,
+          "annotation": "뒤로가기 버튼",
+          "children": [
+            {
+              "name": "back_button_bg",
+              "type": "rectangle",
+              "x": 0,
+              "y": 0,
+              "width": 140,
+              "height": 48,
+              "fill": "#2A2A40",
+              "stroke": "#4A3C28",
+              "strokeWidth": 2,
+              "cornerRadius": 8,
+              "annotation": "버튼 배경"
+            },
+            {
+              "name": "back_button_text",
+              "type": "text",
+              "x": 0,
+              "y": 12,
+              "width": 140,
+              "height": 24,
+              "content": "← 뒤로",
+              "fontSize": 16,
+              "textAlign": "center",
+              "fill": "#E0D5C7",
+              "annotation": "버튼 텍스트"
+            }
+          ]
+        },
+        {
+          "name": "character_tabs",
+          "type": "group",
+          "x": 620,
+          "y": 8,
+          "width": 520,
+          "height": 48,
+          "annotation": "캐릭터 탭 버튼 3개",
+          "children": [
+            {
+              "name": "tab_warrior",
+              "type": "group",
+              "x": 0,
+              "y": 0,
+              "width": 150,
+              "height": 48,
+              "annotation": "전사 탭 - Selected",
+              "children": [
+                {
+                  "name": "tab_warrior_bg",
+                  "type": "rectangle",
+                  "x": 0,
+                  "y": 0,
+                  "width": 150,
+                  "height": 48,
+                  "fill": "#4A4A60",
+                  "stroke": "#C89B3C",
+                  "strokeWidth": 2,
+                  "cornerRadius": 8,
+                  "annotation": "탭 배경 - 선택됨"
+                },
+                {
+                  "name": "tab_warrior_text",
+                  "type": "text",
+                  "x": 0,
+                  "y": 12,
+                  "width": 150,
+                  "height": 24,
+                  "content": "전사",
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                  "fill": "#E0D5C7",
+                  "annotation": "탭 텍스트"
+                }
+              ]
+            },
+            {
+              "name": "tab_mage",
+              "type": "group",
+              "x": 170,
+              "y": 0,
+              "width": 150,
+              "height": 48,
+              "annotation": "법사 탭 - Default",
+              "children": [
+                {
+                  "name": "tab_mage_bg",
+                  "type": "rectangle",
+                  "x": 0,
+                  "y": 0,
+                  "width": 150,
+                  "height": 48,
+                  "fill": "#2A2A40",
+                  "stroke": "#4A3C28",
+                  "strokeWidth": 2,
+                  "cornerRadius": 8,
+                  "annotation": "탭 배경"
+                },
+                {
+                  "name": "tab_mage_text",
+                  "type": "text",
+                  "x": 0,
+                  "y": 12,
+                  "width": 150,
+                  "height": 24,
+                  "content": "법사",
+                  "fontSize": 16,
+                  "textAlign": "center",
+                  "fill": "#A8A196",
+                  "annotation": "탭 텍스트"
+                }
+              ]
+            },
+            {
+              "name": "tab_rogue",
+              "type": "group",
+              "x": 340,
+              "y": 0,
+              "width": 150,
+              "height": 48,
+              "annotation": "도적 탭 - Default",
+              "children": [
+                {
+                  "name": "tab_rogue_bg",
+                  "type": "rectangle",
+                  "x": 0,
+                  "y": 0,
+                  "width": 150,
+                  "height": 48,
+                  "fill": "#2A2A40",
+                  "stroke": "#4A3C28",
+                  "strokeWidth": 2,
+                  "cornerRadius": 8,
+                  "annotation": "탭 배경"
+                },
+                {
+                  "name": "tab_rogue_text",
+                  "type": "text",
+                  "x": 0,
+                  "y": 12,
+                  "width": 150,
+                  "height": 24,
+                  "content": "도적",
+                  "fontSize": 16,
+                  "textAlign": "center",
+                  "fill": "#A8A196",
+                  "annotation": "탭 텍스트"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "start_button",
+          "type": "group",
+          "x": 1580,
+          "y": 8,
+          "width": 180,
+          "height": 48,
+          "annotation": "게임시작 버튼",
+          "children": [
+            {
+              "name": "start_button_bg",
+              "type": "rectangle",
+              "x": 0,
+              "y": 0,
+              "width": 180,
+              "height": 48,
+              "fill": "#2A2A40",
+              "stroke": "#4A3C28",
+              "strokeWidth": 2,
+              "cornerRadius": 8,
+              "annotation": "버튼 배경"
+            },
+            {
+              "name": "start_button_text",
+              "type": "text",
+              "x": 0,
+              "y": 12,
+              "width": 180,
+              "height": 24,
+              "content": "게임 시작 →",
+              "fontSize": 16,
+              "textAlign": "center",
+              "fill": "#E0D5C7",
+              "annotation": "버튼 텍스트"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
