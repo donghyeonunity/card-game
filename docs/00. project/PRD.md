@@ -1,9 +1,6 @@
 # PRD - 에너지 기반 카드 게임
 
 > **문서 목적**: Unity 본개발을 위한 프로젝트 정의서
-> **관련 문서**:
-> - 게임 디자인 철학: `docs/00. project/PRD.md`
-> - 프로토타입 상세: `docs/10. prototype/Prototype-Game.md`
 
 ---
 
